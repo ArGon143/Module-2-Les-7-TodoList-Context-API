@@ -1,0 +1,17 @@
+.form {
+	margin: 0 auto 1.5rem auto;
+}
+.input {
+	padding: 5px 7px;
+	border: none;
+	outline: none;
+	box-shadow: 3px 3px 4px rgb(179, 177, 177);
+	margin-right: 1rem;
+	border-radius: 7px;
+	width: 25rem;
+	font-size: 1rem;
+	opacity: 70%;
+}
+.input:focus {
+	outline: 1px solid #5070b0;
+}

@@ -1,0 +1,9 @@
+.todo {
+	padding: 0 10px;
+	text-align: start;
+	word-break: break-all;
+	line-height: 100%;
+	width: 28rem;
+	margin-right: 1rem;
+	font-size: 1rem;
+}

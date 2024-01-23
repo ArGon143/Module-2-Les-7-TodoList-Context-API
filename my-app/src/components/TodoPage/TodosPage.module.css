@@ -1,0 +1,54 @@
+.TodoPage {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.PageHeader {
+	min-height: 10vh;
+	min-width: 35rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 1.5rem 0;
+}
+
+.TitlePageHeader {
+	font-size: 3rem;
+	font-weight: bold;
+	text-shadow: 2px 2px 3px white;
+	width: 23rem;
+	text-align: center;
+	color: #5070b0;
+}
+
+.formContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.loader {
+	position: fixed;
+	top: 60%;
+	left: 60%;
+	transform: translate(-50%, -50%);
+	width: 25px;
+	height: 25px;
+	border: 5px solid #c8f1f6;
+	border-radius: 50%;
+	border-left-color: transparent;
+	animation: loader 1s infinite;
+}
+
+@keyframes loader {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
