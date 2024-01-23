@@ -1,17 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './TodoList.module.css';
 import TodoItem from '../TodoItem/TodoItem';
-import { TodosContext } from '../../context/context';
 
-const TodoList = () => {
-	const {
-		todos,
-		searchTerm,
-		setSearchTerm,
-		setCheckedSortCheckbox,
-		checkedSortCheckbox,
-	} = useContext(TodosContext);
-
+const TodoList = ({
+	data,
+	searchTerm,
+	setSearchTerm,
+	checkedSortCheckbox,
+	setCheckedSortCheckbox,
+}) => {
 	const [searchResults, setSearchResults] = useState([]);
 
 	const [sortTodosState, setSortTodosState] = useState([]);
@@ -24,22 +21,22 @@ const TodoList = () => {
 	};
 
 	useEffect(() => {
-		let results = todos.filter((item) =>
+		let results = data.filter((item) =>
 			item.title.toLowerCase().includes(searchTerm.toLowerCase()),
 		);
 		setSearchResults(results);
-	}, [searchTerm, todos]);
+	}, [searchTerm, data]);
 
 	useEffect(() => {
 		let sortTodosList;
 
 		if (checkedSortCheckbox === false) {
-			sortTodosList = todos.slice().sort((a, b) => null);
+			sortTodosList = data.slice().sort((a, b) => null);
 		} else if (checkedSortCheckbox === true) {
-			sortTodosList = todos.slice().sort((a, b) => a.title.localeCompare(b.title));
+			sortTodosList = data.slice().sort((a, b) => a.title.localeCompare(b.title));
 		}
 		setSortTodosState(sortTodosList);
-	}, [checkedSortCheckbox, todos]);
+	}, [checkedSortCheckbox, data]);
 
 	let todoList;
 
@@ -54,11 +51,11 @@ const TodoList = () => {
 		todoList = sortTodosState;
 	} else if (checkedSortCheckbox && searchTerm) {
 		todoList = sortTodosState;
-	} else todoList = todos;
+	} else todoList = data;
 
 	return (
 		<>
-			{todos < 1 ? (
+			{data < 1 ? (
 				<></>
 			) : (
 				<>

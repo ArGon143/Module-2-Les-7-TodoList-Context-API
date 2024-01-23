@@ -27,7 +27,7 @@ const TodoPage = () => {
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [refreshTodosList, isUpdatingTodo, checkedSortCheckbox]);
+	}, [refreshTodosList, isUpdatingTodo, checkedSortCheckbox, isDeletingTodo]);
 
 	const editTodo = (id, isEditTodo) => {
 		setIsUpdatingTodo(true);
@@ -95,17 +95,21 @@ const TodoPage = () => {
 			</section>
 			<TodosContext.Provider
 				value={{
-					todos,
 					editTodo,
 					deleteTodo,
-					isDeletingTodo,
-					searchTerm,
-					setSearchTerm,
-					checkedSortCheckbox,
-					setCheckedSortCheckbox,
 				}}
 			>
-				{isLoading ? <div className={styles.loader}></div> : <TodoList />}
+				{isLoading ? (
+					<div className={styles.loader}></div>
+				) : (
+					<TodoList
+						data={todos}
+						searchTerm={searchTerm}
+						setSearchTerm={setSearchTerm}
+						checkedSortCheckbox={checkedSortCheckbox}
+						setCheckedSortCheckbox={setCheckedSortCheckbox}
+					/>
+				)}
 			</TodosContext.Provider>
 		</main>
 	);
